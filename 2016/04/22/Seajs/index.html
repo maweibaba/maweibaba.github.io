@@ -6,14 +6,54 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>祝纬的个人博客</title>
+  <title>Seajs的简单介绍 | 祝纬的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="祝纬的个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1. SeaJS
+A Module Loader for the Web, Enjoy the fun of programming.
+
+
+提供简单、极致的模块化开发体验
+A Module Loader for the Web
+JavaScript 模块加载器
+可以实现 在 JavaScript 代码中去加载另一个 JavaScript 代码。
+
+1.1 SeaJS 介绍
+关于 SeaJS
+
+Se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Seajs的简单介绍">
+<meta property="og:url" content="http://yoursite.com/2016/04/22/Seajs/index.html">
 <meta property="og:site_name" content="祝纬的个人博客">
+<meta property="og:description" content="1. SeaJS
+A Module Loader for the Web, Enjoy the fun of programming.
+
+
+提供简单、极致的模块化开发体验
+A Module Loader for the Web
+JavaScript 模块加载器
+可以实现 在 JavaScript 代码中去加载另一个 JavaScript 代码。
+
+1.1 SeaJS 介绍
+关于 SeaJS
+
+Se">
+<meta property="og:updated_time" content="2016-11-02T03:24:28.530Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="祝纬的个人博客">
+<meta name="twitter:title" content="Seajs的简单介绍">
+<meta name="twitter:description" content="1. SeaJS
+A Module Loader for the Web, Enjoy the fun of programming.
+
+
+提供简单、极致的模块化开发体验
+A Module Loader for the Web
+JavaScript 模块加载器
+可以实现 在 JavaScript 代码中去加载另一个 JavaScript 代码。
+
+1.1 SeaJS 介绍
+关于 SeaJS
+
+Se">
   
     <link rel="alternative" href="/atom.xml" title="祝纬的个人博客" type="application/atom+xml">
   
@@ -137,9 +177,7 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-Seajs" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Seajs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -148,8 +186,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/22/Seajs/">Seajs的简单介绍</a>
+    <h1 class="article-title" itemprop="name">
+      Seajs的简单介绍
     </h1>
   
 
@@ -359,175 +397,44 @@
   </div>
 </article>
 
-
-
-
-
-
-
-
-
-
   
-    <article id="post-node入门" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/16/node入门/">node入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>终于到放假了，可以学一些新东西，逛了一天社区，开始弄自己的博客，也总结了一些关于node的知识，感觉我欠node很多很多。</p>
-<hr>
-<h2 id="JavaScript-模块化开发"><a href="#JavaScript-模块化开发" class="headerlink" title="JavaScript 模块化开发"></a>JavaScript 模块化开发</h2><h2 id="1-模块化介绍"><a href="#1-模块化介绍" class="headerlink" title="1. 模块化介绍"></a>1. 模块化介绍</h2><blockquote>
-<p>掌握模块化基本概念以及使用模块化带来的好处</p>
-</blockquote>
-<p><strong>当你的网站开发越来越复杂的时候，会经常遇到什么问题？</strong></p>
-<ul>
-<li>恼人的命名冲突</li>
-<li>繁琐的文件依赖</li>
-</ul>
-<p>历史上，JavaScript一直没有模块（module）体系，<br>无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。<br>其他语言都有这项功能，比如Ruby的 <code>require</code>、Python的 <code>import</code> ，<br>甚至就连CSS都有 <code>@import</code> ，<br>但是JavaScript任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。</p>
-<p>如何解决不通过 script 标签就能加载 JavaScript 文件代码。</p>
-<ul>
-<li><p>什么是模块化</p>
-<ul>
-<li>一块儿一块儿的：JavaScript 也是一块儿一块儿</li>
-<li>模块化就是一种将复杂事物按照模块的方式简单化实现</li>
-<li>模块与模块之间互相协作构成了模块系统</li>
-</ul>
-</li>
-<li><p>使用模块化开发的方式带来的好处</p>
-<ul>
-<li>生产效率高</li>
-<li>可维护性高</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="2-模块化开发演变"><a href="#2-模块化开发演变" class="headerlink" title="2. 模块化开发演变"></a>2. 模块化开发演变</h2><h3 id="2-1-全局函数"><a href="#2-1-全局函数" class="headerlink" title="2.1 全局函数"></a>2.1 全局函数</h3><ul>
-<li>污染了全局变量</li>
-<li>模块成员之间看不出直接关系</li>
-</ul>
-<h3 id="2-2-命名空间"><a href="#2-2-命名空间" class="headerlink" title="2.2 命名空间"></a>2.2 命名空间</h3><ul>
-<li>理论意义上减少了变量冲突</li>
-<li>缺点1：暴露了模块中所有的成员，内部状态可以被外部改写，不安全</li>
-<li>缺点2：命名空间会越来越长</li>
-</ul>
-<h3 id="2-3-私有空间"><a href="#2-3-私有空间" class="headerlink" title="2.3 私有空间"></a>2.3 私有空间</h3><ul>
-<li>私有空间的变量和函数不会影响全局作用域</li>
-<li>公开公有方法，隐藏私有属性</li>
-</ul>
-<h3 id="2-4-模块的维护和扩展"><a href="#2-4-模块的维护和扩展" class="headerlink" title="2.4 模块的维护和扩展"></a>2.4 模块的维护和扩展</h3><ul>
-<li>开闭原则</li>
-<li>可维护性好</li>
-</ul>
-<h3 id="2-5-模块的第三方依赖"><a href="#2-5-模块的第三方依赖" class="headerlink" title="2.5 模块的第三方依赖"></a>2.5 模块的第三方依赖</h3><ul>
-<li>保证模块的独立性</li>
-<li>模块之间的依赖关系变得明显</li>
-</ul>
-<h3 id="2-6-总结"><a href="#2-6-总结" class="headerlink" title="2.6 总结"></a>2.6 总结</h3><p>以后如果不使用第三方规范的情况下，<br>如果写模块可以采用下面这种方式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">;</div><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">形参模块名, 依赖项, 依赖项</span>) </span>&#123;</div><div class="line">  <span class="comment">// 通过 形参模块名 修改模块</span></div><div class="line"></div><div class="line">  <span class="built_in">window</span>.模块名 = 形参模块名</div><div class="line">&#125;)(<span class="built_in">window</span>.模块名 || &#123;&#125;, 依赖项, 依赖项)</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="3-模块化规范"><a href="#3-模块化规范" class="headerlink" title="3. 模块化规范"></a>3. 模块化规范</h2><h3 id="3-1-模块系统理解"><a href="#3-1-模块系统理解" class="headerlink" title="3.1 模块系统理解"></a>3.1 模块系统理解</h3><p>自然界生态系统、计算机操作系统、软件办公系统，还有教育系统、金融系统、网络系统、<br>理论系统等等。究竟什么是系统呢？</p>
-<blockquote>
-<p>维基百科：系统泛指由一群有关连的个体组成，根据预先编排好的规则工作，<br>能完成个别元件不能单独完成的工作的群体。<br>系统分为自然系统与人为系统两大类。</p>
-</blockquote>
-<p>简单来说，系统有两个基本特性：</p>
-<ol>
-<li>系统由个体组成</li>
-<li>个体之间有关联，按照规则协同完成任务</li>
-</ol>
-<p>系统之间的个体可以成为系统成员，要构建一个系统，最基本的层面需要做两件事：</p>
-<ol>
-<li><strong>定义系统成员</strong>：确定成员是什么<ul>
-<li>模块是一个 JavaScript 文件</li>
-<li>每一个模块都使用 define 函数去定义</li>
-</ul>
-</li>
-<li><strong>约定系统通讯</strong>：确定成员之间如何交互，遵循的规则是什么<ul>
-<li>一个 SeaJS 模块默认就是私有作用域</li>
-<li>如果想要被外部文件模块所访问，就必须把要公开的属性挂载给 module.exports 对象接口</li>
-<li>使用 require 函数可以加载一个指定的模块，得到该模块代码中暴露的接口对象</li>
-</ul>
-</li>
-<li>如何启动整个模块系统<ul>
-<li>在 html 页面中使用 seajs.use() 方法，指定一个入口文件模块</li>
-</ul>
-</li>
-</ol>
-<p>Sea.js 是一个适用于 Web 浏览器端的模块加载器。<br>在 Sea.js 里，一切皆是模块，所有模块协同构建成模块系统。<br>Sea.js 首要要解决的是模块系统的基本问题：</p>
-<ol>
-<li>模块是什么？</li>
-<li>模块之间如何交互？</li>
-</ol>
-<p>在前端开发领域，一个模块，可以是JS 模块，也可以是 CSS 模块，或是 Template 等模块。<br>而 Sea.js 则专注于 JS 文件模块：</p>
-<ol>
-<li>模块是一段 JavaScript 代码，具有统一的 <strong>基本书写格式</strong></li>
-<li>模块之间通过基本 <strong>交互规则</strong> ，能彼此引用，协同工作</li>
-</ol>
-<p>把上面两点中提及的基本书写格式和基本交互规则描述清楚，就能构建出一个模块系统。<br>对书写格式和交互规则的详细描述，就是模块定义规范（Module Definition Specification）。</p>
-<p>比如 CommonJS 社区的 <code>Modules 1.1.1</code> 规范，<br>以及 <code>NodeJS 的 Modules</code> 规范，<br>还有 RequireJS 提出的 <code>AMD</code> 规范等等。</p>
-<p>Sea.js 遵循的是 CMD 规范。</p>
-<h3 id="3-2-常见的-JavaScript-模块化规范"><a href="#3-2-常见的-JavaScript-模块化规范" class="headerlink" title="3.2 常见的 JavaScript 模块化规范"></a>3.2 常见的 JavaScript 模块化规范</h3><ul>
-<li>CommonJS<ul>
-<li>Node.js</li>
-</ul>
-</li>
-<li>AMD<ul>
-<li>RequireJS</li>
-</ul>
-</li>
-<li>CMD Common Module Definition<ul>
-<li>CMD 就是 SeaJS 这个模块加载器在推广的过程中定义的一个模块规范</li>
-</ul>
-</li>
-<li>ECMAScript<ul>
-<li>ECMAScript 6</li>
-</ul>
-</li>
-<li>UMD</li>
-</ul>
-<p>CMD、AMD、CommonJS 都是社区制定出来的模块规范，<br>他们的目的都是为了解决 JavaScript 没有模块化系统的问题。<br>他们都有如何定模块成员，以及模块成员之间如何进行通信交互的规则。</p>
-<p>AngularJS Module 也是 ng 框架本身提供的一个模块系统解决方案。<br>ng定义模块需要起名，即便你去加载或者依赖一个模块的时候，<br>这个被依赖的模块也需要通过 script 标签引入到 html 页面中。</p>
-<p>2015 年 9 月份，ECMAScript  官方推出了 ECMAScript 6 语言标准。<br>在最新的 ES6 语言规范标准中，已经制定了 JavaScript 模块化规范。</p>
-<h2 id="先总结到这里了，有空总结Sea-js。"><a href="#先总结到这里了，有空总结Sea-js。" class="headerlink" title="先总结到这里了，有空总结Sea.js。"></a>先总结到这里了，有空总结Sea.js。</h2>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/04/16/node入门/" class="archive-article-date">
-  	<time datetime="2016-04-16T13:23:59.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-16</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
+<nav id="article-nav">
   
   
+    <a href="/2016/04/16/node入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">node入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
 
 
       </div>
@@ -549,8 +456,8 @@
 		fancybox: true,
 		mathjax: false,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
