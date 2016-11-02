@@ -349,7 +349,7 @@
     <div class="article-info article-info-index">
       
       <a href="/2016/04/22/Seajs/" class="archive-article-date">
-  	<time datetime="2016-04-22T14:23:59.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-22</time>
+  	<time datetime="2016-04-22T14:20:51.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-22</time>
 </a>
       
       
@@ -369,7 +369,7 @@
 
 
   
-    <article id="post-node入门" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-node模块介绍" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -379,7 +379,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/16/node入门/">node入门</a>
+      <a class="article-title" href="/2016/04/16/node模块介绍/">node模块介绍</a>
     </h1>
   
 
@@ -506,8 +506,568 @@
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/04/16/node入门/" class="archive-article-date">
+      <a href="/2016/04/16/node模块介绍/" class="archive-article-date">
   	<time datetime="2016-04-16T13:23:59.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-16</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-node软件包npm模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/13/node软件包npm模块/">node第三方模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Node-中的-JavaScript"><a href="#1-Node-中的-JavaScript" class="headerlink" title="1. Node 中的 JavaScript"></a>1. Node 中的 JavaScript</h2><ul>
+<li>ECMAScript</li>
+<li>Class：Buffer</li>
+<li>定时器函数和清除定时器函数</li>
+<li>global</li>
+<li>process</li>
+<li>console</li>
+<li>模块内成员<ul>
+<li><strong>dirname 和 </strong>filename</li>
+<li>exports</li>
+<li>module</li>
+<li>require</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="2-模块系统"><a href="#2-模块系统" class="headerlink" title="2. 模块系统"></a>2. 模块系统</h2><h3 id="2-1-模块系统解决方案"><a href="#2-1-模块系统解决方案" class="headerlink" title="2.1 模块系统解决方案"></a>2.1 模块系统解决方案</h3><p>Node 基于 CommonJS 规范实现了自己的一套模块系统规范。</p>
+<p>CommonJS 不仅仅包含 模块定义规范，它还给 JavaScript 语言没有触及到服务器领域制定了一些规范。<br>例如：二进制数据操作、文件操作、网络操作、进程操作、模块系统规范。。。</p>
+<ul>
+<li>module.exports</li>
+<li>exports</li>
+<li>requrie</li>
+</ul>
+<p>Node 中的模块，一共分为三类形式，具体如下：</p>
+<h3 id="2-2-文件模块"><a href="#2-2-文件模块" class="headerlink" title="2.2 文件模块"></a>2.2 文件模块</h3><p>以 <code>./</code> 或 <code>../</code> 开头的模块标识就是文件模块，一般就是用户编写的。</p>
+<h3 id="2-3-核心模块"><a href="#2-3-核心模块" class="headerlink" title="2.3 核心模块"></a>2.3 核心模块</h3><ul>
+<li>核心模块就是 node 内置的模块，需要通过唯一的标识名称来进行获取。</li>
+<li>每一个核心模块基本上都是暴露了一个对象，里面包含一些方法供我们使用</li>
+<li>一般在加载核心模块的时候，变量的起名最好就和核心模块的标识名同名即可<ul>
+<li>例如：<code>const fs = require(&#39;fs&#39;)</code></li>
+</ul>
+</li>
+<li>核心模块本质上也是文件模块<ul>
+<li>核心模块已经被编译到了 node 的可执行程序，一般看不到</li>
+<li>可以通过查看 node 的源码看到核心模块文件</li>
+<li>核心模块也是基于 CommonJS 模块规范</li>
+</ul>
+</li>
+</ul>
+<p>每一个模块都提供了单一的功能，以下是常用的核心模块：</p>
+<ul>
+<li>fs            文件操作</li>
+<li>http          http服务</li>
+<li>net           Socket网络编程</li>
+<li>os            操作系统相关</li>
+<li>path          路径操作</li>
+<li>querystring   处理查询字符串</li>
+<li>url           处理url路径</li>
+<li>util          工具函数</li>
+</ul>
+<h3 id="2-4-第三方模块"><a href="#2-4-第三方模块" class="headerlink" title="2.4 第三方模块"></a>2.4 第三方模块</h3><p>一般就是通过 <code>npm install</code> 安装的模块就是第三方模块。</p>
+<p>加载规则如下：</p>
+<ul>
+<li>如果不是文件模块，也不是核心模块</li>
+<li>node 会去 node_modules 目录中找（找跟你引用的名称一样的目录），例如这里 <code>require(&#39;underscore&#39;)</code></li>
+<li>如果在 node_modules 目录中找到 <code>underscore</code> 目录，则找该目录下的 <code>package.json</code> 文件</li>
+<li>如果找到 <code>package.json</code> 文件，则找该文件中的 <code>main</code> 属性，拿到 main 指定的入口模块</li>
+<li>如果过程都找不到，node 则取上一级目录下找 <code>node_modules</code> 目录，规则同上。。。</li>
+<li>如果一直找到代码文件的根路径还找不到，则报错。。。</li>
+</ul>
+<p>注意：对于第三方模块，我们都是 <code>npm install</code> 命令进行下载的，就放到项目根目录下的 <code>node_modules</code> 目录。</p>
+<hr>
+<h2 id="3-包与npm"><a href="#3-包与npm" class="headerlink" title="3. 包与npm"></a>3. 包与npm</h2><h3 id="3-1-包"><a href="#3-1-包" class="headerlink" title="3.1 包"></a>3.1 包</h3><p>包其实就是一些模块组织到一起，放到一个目录中的一个称呼，叫包或者模块都行。</p>
+<h3 id="3-2-package-json"><a href="#3-2-package-json" class="headerlink" title="3.2 package.json"></a>3.2 package.json</h3><p>包说明文件。</p>
+<h3 id="3-3-npm"><a href="#3-3-npm" class="headerlink" title="3.3 npm"></a>3.3 npm</h3><ul>
+<li>本地安装<ul>
+<li><code>npm install 包名 [--save]</code></li>
+<li>本地安装一般用于项目的功能开发，我们会主动的去加载这个模块包，然后使用里面提供的一系列功能</li>
+<li>例如 underscore</li>
+</ul>
+</li>
+<li>全局安装<ul>
+<li>全局安装一般是安装一些工具性的东西</li>
+<li><code>npm install 包名 --global|-g</code></li>
+<li>less</li>
+<li>http-server<ul>
+<li>可以实现快速启动一个服务器</li>
+</ul>
+</li>
+<li>browser-sync<ul>
+<li><a href="https://www.browsersync.io/" target="_blank" rel="external">https://www.browsersync.io/</a></li>
+<li>前端可视化开发</li>
+</ul>
+</li>
+<li>nodemon<ul>
+<li>可以实现文件代码改变自动重启</li>
+</ul>
+</li>
+<li>使用 <code>nom root -g</code> 可以查看全局命令行工具安装的路径</li>
+</ul>
+</li>
+</ul>
+<p>以上这些东西只是片面的，最主要就是要学会搜索以及查看文档。</p>
+<hr>
+<h2 id="4-文件操作"><a href="#4-文件操作" class="headerlink" title="4. 文件操作"></a>4. 文件操作</h2><h3 id="4-1-path"><a href="#4-1-path" class="headerlink" title="4.1 path"></a>4.1 path</h3><ul>
+<li>path.basename(path[, ext])：获取文件名部分</li>
+<li>path.dirname(path)：获取目录部分</li>
+<li>path.extname(path)：获取扩展名部分</li>
+<li>path.isAbsolute(path)：判断是否是绝对路径</li>
+<li>path.join([…paths])：将多个路径拼接为一个路径</li>
+</ul>
+<h3 id="4-2-同步调用和异步调用"><a href="#4-2-同步调用和异步调用" class="headerlink" title="4.2 同步调用和异步调用"></a>4.2 同步调用和异步调用</h3><p>fs模块对文件的几乎所有操作都有同步和异步两种形式，例如：<code>readFile()</code> 和 <code>readFileSync()</code>。</p>
+<p>同步与异步文件系统调用的区别</p>
+<ul>
+<li>同步调用立即执行，会阻塞后续代码继续执行，如果想要捕获异常需要使用 <code>try-catch</code></li>
+<li>异步调用不会阻塞后续代码继续执行，需要回调函数作为额外的参数，通常包含一个错误作为回调函数的第一个参数</li>
+<li>异步调用通过判断第一个err对象来处理异常</li>
+<li>异步调用结果往往通过回调函数来进行获取</li>
+</ul>
+<p>Node 只在文件IO操作中，提供了同步调用和异步调用两种形式，两者可以结合使用，<br>但是推荐能使用异步调用解决问题的情况下，少用同步调用。</p>
+<h3 id="4-3-文件操作常用API"><a href="#4-3-文件操作常用API" class="headerlink" title="4.3 文件操作常用API"></a>4.3 文件操作常用API</h3><ul>
+<li>fs.writeFile(file, data, callback)：文件写入</li>
+<li>fs.appendFile(file, data, callback)：文件追加</li>
+<li>fs.readFile(file[, options], callback)：文件读取</li>
+<li>fs.unlink(path, callback)：删除文件</li>
+<li>fs.stat(path, callback)：获取文件信息</li>
+<li>fs.access(path, callback)：验证文件路径是否存在</li>
+<li>fs.rename(oldPath, newPath, callback)：重命名或移动文件</li>
+</ul>
+<h3 id="4-4-目录操作常用API"><a href="#4-4-目录操作常用API" class="headerlink" title="4.4 目录操作常用API"></a>4.4 目录操作常用API</h3><ul>
+<li>fs.mkdir(path, callback)：创建一个目录</li>
+<li>fs.rmdir(path, callback)：删除一个空目录</li>
+<li>fs.readdir(path, callback)：读取一个目录</li>
+<li>fs.rename(oldPath, newPath, callback)：重命名或移动目录</li>
+</ul>
+<h3 id="4-5-监视"><a href="#4-5-监视" class="headerlink" title="4.5 监视"></a>4.5 监视</h3><ul>
+<li>fs.watchFile(filename[, options], listener)</li>
+<li>fs.watch(filename[, options][, listener])</li>
+</ul>
+<h3 id="4-6-文件流"><a href="#4-6-文件流" class="headerlink" title="4.6 文件流"></a>4.6 文件流</h3><h2 id="5-HTTP"><a href="#5-HTTP" class="headerlink" title="5. HTTP"></a>5. HTTP</h2><ul>
+<li>太简单了</li>
+</ul>
+<h2 id="扩展1：Github-Pages"><a href="#扩展1：Github-Pages" class="headerlink" title="扩展1：Github Pages"></a>扩展1：Github Pages</h2><p>Github Pages</p>
+<h2 id="扩展2：静态博客生成器"><a href="#扩展2：静态博客生成器" class="headerlink" title="扩展2：静态博客生成器"></a>扩展2：静态博客生成器</h2><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">https://hexo.io/zh-cn/</a></p>
+<h3 id="自动化部署"><a href="#自动化部署" class="headerlink" title="自动化部署"></a>自动化部署</h3><ul>
+<li>配置 _config.yml 文件中的 deploy 属性，指定 type 和 repo</li>
+<li>在博客根目录下执行：<code>npm install hexo-deployer-git --save</code></li>
+<li>[如果配置了SSH，可以省略这一步]<ul>
+<li>如果没有配置，那就在刚才的 repo 指定的地址中加入用户名和密码</li>
+</ul>
+</li>
+<li>部署命令：<code>hexo deploy --generate</code></li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/04/13/node软件包npm模块/" class="archive-article-date">
+  	<time datetime="2016-04-13T15:50:11.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-13</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-node入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/10/node入门/">node模块介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Node-js-介绍"><a href="#1-Node-js-介绍" class="headerlink" title="1. Node.js 介绍"></a>1. Node.js 介绍</h2><p>以下简称 Node。</p>
+<blockquote>
+<p>划时代意义的 Node ，开启了大前端时代<br>node 让前端进入了工业自动化时代<br>node 还让原来的小前端可以有机会踏入后端开发领域，使用 JavaScript 语言进行服务器编程<br>总而言之：学习了 Node ，就开启了前端工程师的 <strong>全栈开发</strong> 之旅</p>
+</blockquote>
+<h3 id="1-1-客户端和服务器"><a href="#1-1-客户端和服务器" class="headerlink" title="1.1 客户端和服务器"></a>1.1 客户端和服务器</h3><ul>
+<li>这里就不必去细细讲解客户端和服务器的关系，度娘一下就行。</li>
+</ul>
+<h3 id="1-2-几个问题"><a href="#1-2-几个问题" class="headerlink" title="1.2 几个问题"></a>1.2 几个问题</h3><ul>
+<li><p>什么是 JavaScript</p>
+<ul>
+<li>一种运行在浏览器端的脚本语言。</li>
+<li>JavaScript + DOM + BOM</li>
+<li>ECMAScript + W3C</li>
+<li>ECMAScript + BOM + DOM</li>
+<li>BOM和DOM等都是浏览器环境提供的接口API，供 JavaScript 语言来调用。</li>
+</ul>
+</li>
+<li><p>JavaScript 和 ECMAScript 是什么关系</p>
+<ul>
+<li>ECMAScript 是 JavaScript 语言的标准规范<ul>
+<li>var、if-else、for、Object、Array、String。。。</li>
+</ul>
+</li>
+<li>JavaScript 是 ECMAScript 标准规范的一个实现</li>
+</ul>
+</li>
+<li><p>浏览器和 JavaScript 是什么关系</p>
+<ul>
+<li>JavaScript 是运行在浏览器环境中的</li>
+<li>寄宿关系</li>
+<li>浏览器就是 JavaScript 的一个执行环境</li>
+</ul>
+</li>
+<li><p>浏览器中的 JavaScript 可以做什么</p>
+<ul>
+<li>DOM操作、表单验证、动画、ajax 请求</li>
+</ul>
+</li>
+<li><p>从功能角度 浏览器中的 JavaScript 和其它语言有什么差别</p>
+<ul>
+<li>弱类型</li>
+<li>浏览器中的 JavaScript 专注于处理 GUI 编程（图形界面）</li>
+<li>文件操作<ul>
+<li>HTML5中有一个 FileReader（只能读取用户通过file类型的input标签选择的文件）</li>
+<li>浏览器中的 JavaScript 没有主动操作文件的权限</li>
+</ul>
+</li>
+<li>网络IO<ul>
+<li>接收网络中传输过来的数据，处理网络中传输过来的数据，发对方发送响应</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ECMAScript 只可以运行在浏览器中吗</p>
+<ul>
+<li>JavaScript 不仅仅可以运行在浏览器环境中</li>
+<li>也可以运行在别的环境、平台</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-什么是Node"><a href="#1-3-什么是Node" class="headerlink" title="1.3 什么是Node"></a>1.3 什么是Node</h3><p><a href="https://nodejs.org/en/" target="_blank" rel="external">Node官方网站</a></p>
+<ul>
+<li><p>Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.</p>
+<ul>
+<li>NodeJS 是一个构建与 Chrome V8 JavaScript 解析引擎之上的一个运行时环境</li>
+<li>Chrome V8 开源的</li>
+<li>Chrome V8 引擎在所有浏览器的 JavaScript 解析引擎中是最快的</li>
+<li><a href="https://zh.wikipedia.org/wiki/JavaScript%E5%BC%95%E6%93%8E" target="_blank" rel="external">维基百科 - JavaScript引擎</a></li>
+</ul>
+</li>
+<li><p>Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.</p>
+<ul>
+<li>event-driven：事件驱动</li>
+<li>non-blocking I/O model：非阻塞IO模型</li>
+<li>lightweight and efficient：轻量和高效</li>
+<li>Node 本身知识提供了一些系统级别操作API</li>
+</ul>
+</li>
+<li><p>Node.js’ package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+<ul>
+<li>package ecosystem, npm：包管理系统 npm</li>
+<li>largest ecosystem of open source libraries in the world.<ul>
+<li>目前世界上最大的开源库生态系统</li>
+<li>50W + 就好比 Sublime编辑器一样，本身只提供很简单的功能</li>
+<li>大部分都需要依靠社区中的插件、包来开发咱们的应用程序</li>
+<li>如果英语好，占优势</li>
+<li>npm 两层含义：<ul>
+<li>第一是一用来托管基于Node开发的包的</li>
+<li>第二是一个命令行工具，可以用来下载npm网站上托管的Node包</li>
+<li>有了 npm，就会成为完全傻瓜式的开发</li>
+<li>直接拿来解决你的问题就可以了，能让你更加专注于业务的处理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Node 是基于 Chrome V8 解析引擎之上构建的一个 JavaScript 运行时环境，或者说平台</p>
+<ul>
+<li>在 Node 中，可以使用 JavaScript 语言进行编程吧</li>
+</ul>
+</li>
+<li>Node 能解析和执行 JavaScript（ECMAScript） 代码</li>
+<li>Node 是一个平台，让 JavaScript 可以脱离浏览器环境运行</li>
+<li>Node 自身使用 c++ 语言写出了很多系统级别相关的 API，暴露了一些 JavaScript 环境 API<ul>
+<li>例如文件操作</li>
+<li>网络操作</li>
+<li>。。。</li>
+</ul>
+</li>
+<li>使用 Node 可以轻松的进行文件系统访问、HTTP 服务器开发等功能</li>
+<li>免费开源</li>
+</ul>
+<h3 id="1-4-使用-Node-可以做什么"><a href="#1-4-使用-Node-可以做什么" class="headerlink" title="1.4 使用 Node 可以做什么"></a>1.4 使用 Node 可以做什么</h3><p><img src="img/node-npm.png" alt="node-npm"></p>
+<ul>
+<li>高性能的网站服务器</li>
+<li>实时多人游戏后台服务器</li>
+<li>简单易用的命名行应用程序<ul>
+<li>gulp、less、bower、fis、http-server</li>
+<li>ant、ruby、.net nuget</li>
+</ul>
+</li>
+<li>高大上的桌面应用程序<ul>
+<li>使用 Web 技术 作为解决方案</li>
+<li>electron Linus + Max + Windows</li>
+</ul>
+</li>
+<li>底层的物联网开发<ul>
+<li>树莓派</li>
+</ul>
+</li>
+<li>移动开发<ul>
+<li>Ionic 安卓 IOS</li>
+<li>使用 Web 技术作为解决方案</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5-Node-的特点"><a href="#1-5-Node-的特点" class="headerlink" title="1.5 Node 的特点"></a>1.5 Node 的特点</h3><ul>
+<li>Single Thread：单线程</li>
+<li>event-driven：事件驱动</li>
+<li>non-blocking I/O model：非阻塞IO模型<ul>
+<li>文件IO、网络IO 基本上都是异步的</li>
+<li>所以在 Node 中会看到各种各样的花式回调</li>
+</ul>
+</li>
+<li>Node 采用的是 事件驱动和非阻塞IO模型 使它本身非常的轻量级和高效。</li>
+<li>开源免费、跨平台</li>
+</ul>
+<h3 id="1-6-Node-的诞生历程"><a href="#1-6-Node-的诞生历程" class="headerlink" title="1.6 Node 的诞生历程"></a>1.6 Node 的诞生历程</h3><ul>
+<li>Node 的作者：<code>Ryan Dahl</code></li>
+<li>2004年还在纽约读数学系博士</li>
+<li>2006年退学（世界那么大，我想去看看），生活所迫，选择了码农</li>
+<li>接项目、工作、旅行，两年之后，成为了高性能Web服务器的专家</li>
+<li>2009年5月，Ryan Dahl 在 github 上发布了最初的 Node 版本</li>
+<li>2010年底，Ryan Dahl 加入 Joyent 公司全职负责 Node 的发展</li>
+<li>2011年7月，Node 在微软的支持下发布了 Windows 版</li>
+<li>2012年1月底，Ryan Dahl 将掌门人身份转交给了 Isaac Z.Schlueter，自己转向一些研究项目</li>
+<li>2014年12月，多为重量级Node开发者不满 Joyent 对 Node 的管理，自立门户创建了 <code>io.js</code></li>
+<li>2015年9月，Node 与 io.js 合并，Node 的版本从 0.12.7 直接升级到了 4.0.0</li>
+<li>合并后的 io.js 和 Node 在 Joyent 公司的维护下并行了两个版本：<ul>
+<li>一个是4.x.x  还是原来的 Node，这个版本是稳定版</li>
+<li>一个是5.x.x，目前已经更新到了 6.8.1，其实就是 io.js，最新特性版，不建议生产环境使用</li>
+</ul>
+</li>
+<li>Node 计划在 2016 年 10月底正式发布 Node 7.0<ul>
+<li>7.0 已经最大限度的支持了很多的 ES6 新语法</li>
+<li>而且提高了整体的执行性能，提供了一些别的API</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-7-为什么要学习-Node"><a href="#1-7-为什么要学习-Node" class="headerlink" title="1.7 为什么要学习 Node"></a>1.7 为什么要学习 Node</h3><ul>
+<li>Node 打破了过去 JavaScript 只能在浏览器中运行的局面</li>
+<li>前后端编程环境统一，大大降低了前后端语言切换的代价</li>
+<li>全栈开发工程师<ul>
+<li>后端开发工程师</li>
+<li>前端开发工程师</li>
+<li>移动端开发工程师</li>
+</ul>
+</li>
+<li>前端 + 后端</li>
+</ul>
+<h3 id="1-8-总结"><a href="#1-8-总结" class="headerlink" title="1.8 总结"></a>1.8 总结</h3><p>Node 是基于 <code>Chrome V8</code> 引擎，一个 JavaScript 运行时环境。<br>Node 可以解析和执行 JavaScript（ECMAScript） 脚本代码，<br>而且提供了很多系统级别的API（文件读写、进程管理、网络通信）。</p>
+<p>Node 不是一个新的语言，而且一个运行时环境，类似于浏览器环境或者说平台，<br>可以用来解析和执行 JavaScript 语言代码。</p>
+<p>JavaScript 长久以来一直被限制在浏览器的沙箱中运行，<br>它的能力取决于浏览器中间层提供的支持多少。<br>Node 将高性能的 V8 带到了服务器端，使 JavaScript 也可以开发出实时高性能的服务器。<br>在 Node 中，不再与CSS样式表，DOM树打交道，<br>可以随意的访问本地文件，搭建 WebSocket 服务器，连接数据库等系统级底层操作。<br>Node <code>不处理 UI，只关心数据</code>，无论是本地数据还是网络数据。<br>前后端编程统一，大大降低了前后端编程切换的代码。</p>
+<p>对于前端工程师而言，自己熟悉的 JavaScript 如今竟然可以在另一个地方大放异彩，<br>不谈其他原因，仅仅因为好奇，也值得去关注和探究它。</p>
+<p>JavaScript 全栈开发工程师，JavaScript 语言的责任已经越来越重了。</p>
+<h3 id="1-9-Node-学习资源推荐"><a href="#1-9-Node-学习资源推荐" class="headerlink" title="1.9 Node 学习资源推荐"></a>1.9 Node 学习资源推荐</h3><ul>
+<li>深入浅出Node.js</li>
+<li>Node.js实战（第一季）</li>
+<li>Node与Express开发</li>
+<li><a href="http://www.runoob.com/nodejs/nodejs-tutorial.html" target="_blank" rel="external">菜鸟教程 - Node.js</a></li>
+<li><a href="https://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">七天学会NodeJS</a></li>
+<li><a href="https://cnodejs.org/" target="_blank" rel="external">Node中文社区</a></li>
+<li><a href="http://nodeapi.ucdok.com/#/api/" target="_blank" rel="external">Node V4.2.1中文文档</a></li>
+<li><a href="https://github.com/alsotang/node-lessons" target="_blank" rel="external">Node.js 包教不包会</a></li>
+</ul>
+<hr>
+<h2 id="2-安装与配置-Node-开发环境"><a href="#2-安装与配置-Node-开发环境" class="headerlink" title="2. 安装与配置 Node 开发环境"></a>2. 安装与配置 Node 开发环境</h2><h3 id="2-1-关于版本的选择"><a href="#2-1-关于版本的选择" class="headerlink" title="2.1 关于版本的选择"></a>2.1 关于版本的选择</h3><h3 id="2-2-普通方式安装"><a href="#2-2-普通方式安装" class="headerlink" title="2.2 普通方式安装"></a>2.2 普通方式安装</h3><ul>
+<li>下载地址：<code>https://nodejs.org/en/download/</code></li>
+<li>下一步下一步即可</li>
+</ul>
+<h3 id="2-3-使用-nvm-安装和管理多个-node-版本"><a href="#2-3-使用-nvm-安装和管理多个-node-版本" class="headerlink" title="2.3 使用 nvm 安装和管理多个 node 版本"></a>2.3 使用 <code>nvm</code> 安装和管理多个 node 版本</h3><ul>
+<li>nvm node version management</li>
+<li>nvm 是一个命令行程序，可以非常方便的安装和管理多个 Node 版本</li>
+<li>下载地址：<code>https://github.com/coreybutler/nvm-windows</code></li>
+</ul>
+<h3 id="2-4-如何验证是否有Node环境"><a href="#2-4-如何验证是否有Node环境" class="headerlink" title="2.4 如何验证是否有Node环境"></a>2.4 如何验证是否有Node环境</h3><p>打开终端，输入 <code>node -v</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node -v</div><div class="line">$ vx.x.x</div></pre></td></tr></table></figure>
+<p>如果能看到输出一个版本号，例如 <code>v6.8.1</code> 的文本，说明当前计算机有 Node环境。</p>
+<hr>
+<h2 id="2-快速体验"><a href="#2-快速体验" class="headerlink" title="2. 快速体验"></a>2. 快速体验</h2><h3 id="3-1-Hello-World"><a href="#3-1-Hello-World" class="headerlink" title="3.1 Hello World"></a>3.1 Hello World</h3><p>使用 <code>node</code> 命令执行一个 <code>JavaScript</code> 脚本文件：</p>
+<ol>
+<li>打开任意终端</li>
+<li>使用 <code>cd</code> 命令切换到要执行的 js 脚本文件所属的目录</li>
+<li>使用 <code>node 文件名</code> 去执行对应的 js 脚本文件</li>
+<li>node 会解析和执行该文件中的代码，然后将执行结果输出到终端</li>
+</ol>
+<p>当你在终端中输入 node example.js，<br>实际上就是使用安装目录中的 node.exe 可执行程序，<br>node.exe 程序会自动读取该文件中的内容，<br>读取到该文件内容之后，node 环境开始解析和执行，<br>如果有 console.log 这样的代码，node 会将该输出打印到控制台中。</p>
+<ul>
+<li><p>注意1：文件名不要使用 <code>node</code> 命名</p>
+</li>
+<li><p>注意2：文件名和路径最好不要使用中文，路径中也最好不要有空格</p>
+</li>
+</ul>
+<h3 id="3-2-文件IO：读写文件"><a href="#3-2-文件IO：读写文件" class="headerlink" title="3.2 文件IO：读写文件"></a>3.2 文件IO：读写文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 读取文件</span></div><div class="line"><span class="comment">// fs.readFile('./README', function(err, data) &#123;</span></div><div class="line"><span class="comment">//   if (err) &#123;</span></div><div class="line"><span class="comment">//     // return console.log('读取文件失败了')</span></div><div class="line"><span class="comment">//     throw err</span></div><div class="line"><span class="comment">//   &#125;</span></div><div class="line"><span class="comment">//   console.log(data.toString())</span></div><div class="line"><span class="comment">// &#125;)</span></div><div class="line"></div><div class="line"><span class="comment">// 写入文件</span></div><div class="line">fs.writeFile(<span class="string">'./a.txt'</span>, <span class="string">'hello aaa'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">throw</span> err</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'文件写入成功'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="3-3-网络IO：HTTP服务器"><a href="#3-3-网络IO：HTTP服务器" class="headerlink" title="3.3 网络IO：HTTP服务器"></a>3.3 网络IO：HTTP服务器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 1. 创建 HTTP 服务器，得到一个 服务器实例对象</span></div><div class="line"><span class="keyword">var</span> server = http.createServer()</div><div class="line"></div><div class="line"><span class="keyword">var</span> money = <span class="number">0</span></div><div class="line"></div><div class="line"><span class="comment">// 2. 给 Server 对象添加 request 事件处理函数</span></div><div class="line"><span class="comment">// 回调函数需要接收两个参数：</span></div><div class="line"><span class="comment">//    第一个参数：Request，用来获取当前客户端的请求信息</span></div><div class="line"><span class="comment">//                Request 对象可以获取客户端请求中的 url 请求地址、查询字符串、post 请求提交的数据等</span></div><div class="line"><span class="comment">//    第二个参数：Response 也是一个对象，一般用来给本次请求发送响应数据</span></div><div class="line">server.on(<span class="string">'request'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</div><div class="line">  money++</div><div class="line"></div><div class="line">  <span class="comment">// 告诉客户端，本次响应的数据是文本类型，utf-8 编码</span></div><div class="line">  response.writeHead(<span class="number">200</span>, &#123;</div><div class="line">    <span class="string">'Content-Type'</span>: <span class="string">'text/plain; charset=utf-8'</span></div><div class="line">  &#125;)</div><div class="line">  response.write(<span class="string">'回家过年了，今年赚了：'</span> + money + <span class="string">' RMB'</span>)</div><div class="line">  response.end()</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 3. 通过 Server 对象的 listen 函数，设置一个监听的端口号，启动服务器</span></div><div class="line">server.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 当服务器开启监听成功之后，会触发该回调处理函数</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'server is running at port 3000.'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="4-path环境变量"><a href="#4-path环境变量" class="headerlink" title="4. path环境变量"></a>4. path环境变量</h2><p>当在终端中要求系统运行一个程序而没有告诉它程序所在的完整路径时，<br>系统首先在当前目录下面寻找该程序，<br>如果找不到，则系统会跑到path环境变量中指定的路径去找，如果找到，直接运行，<br>如果path环境变量中也没有找到，则直接提示不是内部或外部命令，也不是可运行的程序。</p>
+<p>添加 path 环境变量的两种方式：</p>
+<p>一：直接在path环境变量中加入程序所属目录的绝对路径，<br>    两边以 <strong>英文分号</strong> 进行分隔。</p>
+<p>例如 <code>feiq.exe</code> 程序的绝对路径是 <code>C:\Program Files\feiQ</code>，<br>则在 <code>path</code> 中添加 <code>;C:\Program Files\feiQ;</code></p>
+<p>二：也可以在外部先定义一个变量名，值就是程序所属目录的绝对路径，<br>    然后在 path 中以 <code>%变量名%</code> 的方式引入，两边以分号分隔</p>
+<p>例如 <code>qq.exe</code> 程序的绝对路径是 <code>C:\Program Files (x86)\Tencent\QQ\Bin</code>，<br>则先定义一个变量名 <code>QQ_HOME</code> ，变量值就是 <code>C:\Program Files (x86)\Tencent\QQ\Bin</code>，<br>然后在 <code>path</code> 中填入变量名：<code>;%QQ_HOME%;</code></p>
+<h2 id="5-Node-基础"><a href="#5-Node-基础" class="headerlink" title="5. Node 基础"></a>5. Node 基础</h2><h3 id="5-1-Node-中的-JavaScript"><a href="#5-1-Node-中的-JavaScript" class="headerlink" title="5.1 Node 中的 JavaScript"></a>5.1 Node 中的 JavaScript</h3><ul>
+<li><p>REPL运行环境</p>
+<ul>
+<li>R：read</li>
+<li>E：Eval</li>
+<li>P：Print</li>
+<li>L：Loop</li>
+</ul>
+</li>
+<li><p>ECMAScript</p>
+<ul>
+<li>Node 对最新的 ECMAScript 语言标准支持的非常好</li>
+<li>对最新的 ES6 支持了将近 96% 的语法</li>
+<li>Node 除了官方的 ECMAScript 语言规范</li>
+<li>同时将 console 对象、定时器等函数也移植到 Node 中</li>
+</ul>
+</li>
+<li><p>全局对象</p>
+<ul>
+<li>global<ul>
+<li>相对于浏览器中的的全局对象 window</li>
+<li>全局作用域和模块作用域的概念</li>
+</ul>
+</li>
+<li>Console<ul>
+<li>log</li>
+<li>info</li>
+<li>warn</li>
+<li>error</li>
+</ul>
+</li>
+<li>process<ul>
+<li>进程对象</li>
+</ul>
+</li>
+<li>Buffer</li>
+</ul>
+</li>
+<li><p>全局函数</p>
+<ul>
+<li>setInterval 和 clearInterval</li>
+<li>setTimeout 和 clearTimeout</li>
+<li>setImmediate 和 clearImmediate</li>
+</ul>
+</li>
+<li><p>模块内成员</p>
+<ul>
+<li><strong>dirname 和 </strong>filename</li>
+<li>require</li>
+<li>exports</li>
+<li>module</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-Node-中的模块系统"><a href="#5-2-Node-中的模块系统" class="headerlink" title="5.2 Node 中的模块系统"></a>5.2 Node 中的模块系统</h3><ul>
+<li>Node 根据 <code>CommonJS</code> 规范实现了自己的一套模块系统</li>
+<li>一个单独的文件就是一个模块<ul>
+<li>如何定义模块：</li>
+<li>Node 天生就已经实现了一个模块系统解决方案</li>
+<li>默认在Node中运行的 JavaScript 脚本文件，就是一个模块，而且是私有作用域</li>
+</ul>
+</li>
+<li>每一个模块都是一个单独的作用域<ul>
+<li>没有浏览器中 window 全局作用域的概念了</li>
+</ul>
+</li>
+<li>每个文件对外接口是 <code>module.exports</code> 对象</li>
+<li><code>require</code> 方法用于加载模块<ul>
+<li>执行被加载模块中的 JavaScript 代码</li>
+<li>得到模块的 <code>module.exports</code> 接口对象</li>
+</ul>
+</li>
+<li>核心模块和文件模块</li>
+</ul>
+<h3 id="5-3-包和-npm"><a href="#5-3-包和-npm" class="headerlink" title="5.3 包和 npm"></a>5.3 包和 npm</h3><h2 id="6-调试-Node"><a href="#6-调试-Node" class="headerlink" title="6. 调试 Node"></a>6. 调试 Node</h2><blockquote>
+<p>一个优秀的开发人员调试能力很重要<br>任何一个平台的开发都离不开调试，调试不仅仅是工具，更多的是套路</p>
+</blockquote>
+<h3 id="6-1-关于-Debug"><a href="#6-1-关于-Debug" class="headerlink" title="6.1 关于 Debug"></a>6.1 关于 Debug</h3><p>所谓的 Debug ，也就是找到并去除缺陷的过程，这些过程呢，其实也是由套路规则可循的，以下是我总结的一些调试经验：</p>
+<ul>
+<li><strong>系统化注释掉或禁用代码块</strong>：排除法</li>
+<li>分析网络数据流，确定问题是客户端还是服务器</li>
+<li>使用之前能用的输入，并一点一定地修改输入，直到问题呈现</li>
+<li>用版本控制逐次回退，直到问题消失</li>
+</ul>
+<h3 id="6-2-Node-中的-Debug"><a href="#6-2-Node-中的-Debug" class="headerlink" title="6.2 Node 中的 Debug"></a>6.2 Node 中的 Debug</h3><ul>
+<li><strong>console.log</strong></li>
+<li>node-inspector<ul>
+<li>这个一个可以在浏览器中调试 Node 的一个工具</li>
+</ul>
+</li>
+<li>visual studio code<ul>
+<li>这也是一个编辑器，内部类似于 Webstorm，也集成了一个调试Node代码的功能</li>
+</ul>
+</li>
+<li>Webstorm</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/04/10/node入门/" class="archive-article-date">
+  	<time datetime="2016-04-10T09:40:20.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-10</time>
 </a>
       
       
