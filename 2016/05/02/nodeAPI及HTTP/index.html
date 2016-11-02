@@ -6,14 +6,42 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016/4 | 祝纬的个人博客</title>
+  <title>node基本API及HTTP讲解 | 祝纬的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="祝纬的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2016/04/index.html">
+  <meta name="description" content="API
+ECMAScript
+Globals
+setImmediate(callback[, …args])
+setInterval(callback, delay[, …args])
+setTimeout(callback, delay[, …args])
+clearImmediate(immediateObject)
+clearInterval(intervalObject)
+clearTim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node基本API及HTTP讲解">
+<meta property="og:url" content="http://yoursite.com/2016/05/02/nodeAPI及HTTP/index.html">
 <meta property="og:site_name" content="祝纬的个人博客">
+<meta property="og:description" content="API
+ECMAScript
+Globals
+setImmediate(callback[, …args])
+setInterval(callback, delay[, …args])
+setTimeout(callback, delay[, …args])
+clearImmediate(immediateObject)
+clearInterval(intervalObject)
+clearTim">
+<meta property="og:updated_time" content="2016-11-02T04:27:59.269Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="祝纬的个人博客">
+<meta name="twitter:title" content="node基本API及HTTP讲解">
+<meta name="twitter:description" content="API
+ECMAScript
+Globals
+setImmediate(callback[, …args])
+setInterval(callback, delay[, …args])
+setTimeout(callback, delay[, …args])
+clearImmediate(immediateObject)
+clearInterval(intervalObject)
+clearTim">
   
     <link rel="alternative" href="/atom.xml" title="祝纬的个人博客" type="application/atom+xml">
   
@@ -137,157 +165,194 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-nodeAPI及HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="article-title" itemprop="name">
+      node基本API及HTTP讲解
+    </h1>
   
+
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li>ECMAScript</li>
+<li>Globals<ul>
+<li>setImmediate(callback[, …args])</li>
+<li>setInterval(callback, delay[, …args])</li>
+<li>setTimeout(callback, delay[, …args])</li>
+<li>clearImmediate(immediateObject)</li>
+<li>clearInterval(intervalObject)</li>
+<li>clearTimeout(timeoutObject)</li>
+<li>console</li>
+<li>global<ul>
+<li>类似于 window 对象，在整个模块系统中共享一个 global</li>
+<li>没有全局作用域</li>
+</ul>
+</li>
+<li>process<ul>
+<li>进程对象：能获取当前运行的 node 程序的一些信息</li>
+<li>例如向当前终端输出一些内容，或者接收终端中用户的输入</li>
+</ul>
+</li>
+<li>Class: Buffer（是Node中为了处理二进制数据做的一个对象）<ul>
+<li>Buffer 是一个类似于数组的结构对象</li>
+<li>Buffer 数组结构是一个由 16进制 表现形式的一个一个的单位元素</li>
+<li>例如，读取文件，默认不指定编码的情况下读取到的就是一个 Buffer对象</li>
+<li>在这里只需要知道 Buffer（二进制数据）和 字符之间有编码（字典）转换关系</li>
+<li>所谓的编码其实就是咱们认识的字典</li>
+<li>iconv-lite 内置了很多的字典</li>
+</ul>
+</li>
+<li>模块系统<ul>
+<li>封装细节，对外暴露功能</li>
+<li>module.exports</li>
+<li>require()</li>
+<li>exports</li>
+</ul>
+</li>
+<li>模块内属性成员<ul>
+<li><strong>dirname 和 </strong>filename</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Path<ul>
+<li>path.basename(path[, ext])</li>
+<li>path.dirname(path)</li>
+<li>path.extname(path)</li>
+<li>path.isAbsolute(path)</li>
+<li>path.join([…paths])</li>
+</ul>
+</li>
+<li>File System</li>
+<li>HTTP</li>
+<li>Query String<ul>
+<li>querystring.parse(str)</li>
+<li>可以把传入的 <code>key1=value&amp;key2=value&amp;key3=value...</code> 的形式解析成一个对象</li>
+</ul>
+</li>
+<li>URL<ul>
+<li>url.parse()</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>HyperText Transfer Protocol 超文本传输协议</p>
+<h3 id="当你在地址栏输入地址敲回车之后发生的事情"><a href="#当你在地址栏输入地址敲回车之后发生的事情" class="headerlink" title="当你在地址栏输入地址敲回车之后发生的事情"></a><strong>当你在地址栏输入地址敲回车之后发生的事情</strong></h3><ol>
+<li>用户在浏览器地址栏中输入网站域名</li>
+<li>浏览器拿到该域名自动去请求 <strong>DNS服务器查询</strong> 用户输入的域名对应的 <code>ip</code> 地址</li>
+<li>浏览器拿到 <code>ip</code> 地址之后，通过ip地址+端口号（HTTP默认80）和服务器建立连接（通过 <strong>三次握手</strong> ）</li>
+<li>三次握手建立连接成功之后</li>
+<li>浏览器将用户输入的 <code>url</code> 地址通过 <code>HTTP</code> 协议包装成 <strong>请求报文</strong> ，然后通过 <code>Socket（服务器ip地址和端口号）</code> 发送到服务器</li>
+<li>当HTTP服务器接收到客户端浏览器发送过来的请求报文时候，按照 <code>HTTP</code> 协议将请求报文解析出来</li>
+<li>然后服务器拿到请求报文中的请求信息（例如请求路径url），做相应的业务逻辑处理操作</li>
+<li>当业务逻辑处理完毕之后，服务器将要发送给客户端的数据按照 <code>HTTP</code> 协议包装成 <strong>响应报文</strong></li>
+<li>然后服务器将响应报文数据发送给客户端浏览器</li>
+<li>当浏览器接收到服务器发送给自己的响应报文数据的时候，浏览器根据 <code>HTTP</code> 协议将报文内容解析出来</li>
+<li>浏览器拿到响应报文体中的数据开始 <strong>解析渲染html、css，执行 JavaScript</strong></li>
+<li>如果在解析的过程（从上到下）中，发现有外链的标签（link、css、img）</li>
+<li>浏览器会自动对该标签指向的 路径地址 发起新的请求，同上。</li>
+</ol>
+<h3 id="基本-API"><a href="#基本-API" class="headerlink" title="基本 API"></a>基本 API</h3><ul>
+<li><p>Server</p>
+<ul>
+<li>http.createServer([requestListener])</li>
+<li>Event: ‘request’</li>
+<li>Event: ‘close’</li>
+<li>Event: ‘connection’</li>
+<li>server.close([callback])</li>
+<li>server.listen([port][, hostname][, backlog][, callback])</li>
+</ul>
+</li>
+<li><p>Request</p>
+<ul>
+<li>Event: ‘data’</li>
+<li>Event: ‘close’</li>
+<li>message.headers</li>
+<li>message.httpVersion</li>
+<li>message.method</li>
+<li>message.url</li>
+</ul>
+</li>
+<li><p>Response</p>
+<ul>
+<li>response.write(chunk[, encoding][, callback])</li>
+<li>response.end([data][, encoding][, callback])</li>
+<li>response.writeHead(statusCode[, statusMessage][, headers])</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/02/nodeAPI及HTTP/" class="archive-article-date">
+  	<time datetime="2016-05-02T05:34:31.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-02</time>
+</a>
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/22/Seajs/" class="archive-article-date">
-  	<time datetime="2016-04-22T14:20:51.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/22/Seajs/">Seajs的简单介绍</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/22/Mysql/" class="archive-article-date">
-  	<time datetime="2016-04-22T14:20:51.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/22/Mysql/">Seajs的简单介绍</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+  
+<nav id="article-nav">
+  
+    <a href="/2016/05/12/Express、ejs、中间价简单了解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Seajs的简单介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/22/Seajs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Seajs的简单介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/16/node模块介绍/" class="archive-article-date">
-  	<time datetime="2016-04-16T13:23:59.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/16/node模块介绍/">node模块介绍</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/13/node软件包npm模块/" class="archive-article-date">
-  	<time datetime="2016-04-13T15:50:11.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/13/node软件包npm模块/">node第三方模块</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/10/node入门/" class="archive-article-date">
-  	<time datetime="2016-04-10T09:40:20.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/10/node入门/">node模块介绍</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
 
 
       </div>
@@ -310,8 +375,8 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
